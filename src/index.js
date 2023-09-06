@@ -5,6 +5,7 @@ import { db } from './config/db.js'
 import authRoutes from './routes/authRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import roleRoutes from './routes/roleRoutes.js'
+import clientRoutes from './routes/clientRoutes.js'
 
 dotenv.config()
 
@@ -37,6 +38,7 @@ app.use(cors(corsOptions))
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/rol', roleRoutes)
+app.use('/api/client', clientRoutes)
 
 const PORT = process.env.PORT || 4000
 
