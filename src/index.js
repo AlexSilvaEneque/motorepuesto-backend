@@ -15,11 +15,11 @@ app.use(express.json())
 
 db()
 
-const whiteList = [process.env.FRONTEND_URL]
+const whiteList = [process.env.FRONTEND_URL, undefined]
 
-if (process.argv[2] === '--postman') {
-    whiteList.push(undefined)
-}
+// if (process.argv[2] === '--postman') {
+//     whiteList.push(undefined)
+// }
 
 const corsOptions = {
     origin: function (origin, callback) {
