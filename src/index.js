@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import roleRoutes from './routes/roleRoutes.js'
 import clientRoutes from './routes/clientRoutes.js'
+import productRoutes from './routes/productRoutes.js'
 
 dotenv.config()
 
@@ -39,6 +40,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/rol', roleRoutes)
 app.use('/api/client', clientRoutes)
+app.use('/api/product', productRoutes)
 
 const PORT = process.env.PORT || 4000
 
