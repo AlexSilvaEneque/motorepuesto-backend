@@ -40,17 +40,17 @@ const newProduct = async (req, res) => {
     }
 }
 
-const update = async (req, res) => {
-    const { id } = req.params
+// const update = async (req, res) => {
+//     const { id } = req.params
 
-    if (validateObjectId(id, res)) return
+//     if (validateObjectId(id, res)) return
 
-    if (Object.keys(req.body).length <= 0) {
-        const error = new Error('Envie los campos obligatorios')
-        return res.status(404).json({
-            msg: error.message
-        })
-    }
-}
+//     if (Object.keys(req.body).length <= 0) {
+//         const error = new Error('Envie los campos obligatorios')
+//         return res.status(404).json({
+//             msg: error.message
+//         })
+//     }
+// }
 
 export {allProduct, getById, newProduct}
