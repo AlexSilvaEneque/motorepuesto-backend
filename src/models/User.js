@@ -35,6 +35,10 @@ const userSchema = mongoose.Schema({
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Role'
+    },
+    status:{
+        type: Boolean,
+        default : true
     }
 })
 

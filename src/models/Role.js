@@ -5,6 +5,11 @@ const roleSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+
+    status:{
+        type: Boolean,
+        default : true
     }
 })
 

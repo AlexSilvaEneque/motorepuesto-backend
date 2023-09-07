@@ -112,8 +112,10 @@ const deleteUser = async (req, res) => {
         return handleNotFoundError('El usuario no existe', res)
     }
 
+    user.status = false
+
     try {
-        await user.deleteOne()
+        await user.save()
         res.json({
             msg: 'Usuario eliminado exitosamente'
         })

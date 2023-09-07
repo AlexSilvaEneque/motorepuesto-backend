@@ -83,8 +83,9 @@ const deleteRole = async (req, res) => {
         return handleNotFoundError('El rol no existe', res)
     }
 
+    rol.status = false
     try {
-        await rol.deleteOne()
+        await rol.save()
         res.json({
             msg: 'Rol eliminado exitosamente'
         })
