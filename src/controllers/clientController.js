@@ -2,7 +2,9 @@ import Client from "../models/Client.js"
 import { handleNotFoundError, validateObjectId } from "../utils/index.js"
 
 const allClient = async (req, res) => {
-    const clients = await Client.find()
+    const clients = await Client.find({
+        status:true
+    })
     res.json(clients)
 }
 

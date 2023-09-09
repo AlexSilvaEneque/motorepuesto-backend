@@ -39,7 +39,9 @@ const register = async (req, res) => {
 }
 
 const getAll = async (req, res) => {
-    const user = await User.find().select("-password")
+    const user = await User.find({
+        status:true
+    }).select("-password")
     res.json({
         user
     })

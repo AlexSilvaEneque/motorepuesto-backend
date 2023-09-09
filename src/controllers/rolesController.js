@@ -2,7 +2,9 @@ import Role from "../models/Role.js"
 import { validateObjectId } from "../utils/index.js"
 
 const getAll = async (req, res) => {
-    const roles = await Role.find()
+    const roles = await Role.find({
+        status:true
+    })
     res.json({
         roles
     })

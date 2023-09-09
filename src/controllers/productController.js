@@ -4,7 +4,9 @@ import { handleNotFoundError, validateObjectId } from "../utils/index.js"
 import Client from "../models/Client.js"
 
 const allProduct = async (req, res) =>{
-    const products = await Product.find()
+    const products = await Product.find({
+        status:true
+    })
     res.json(products)
 }
 
