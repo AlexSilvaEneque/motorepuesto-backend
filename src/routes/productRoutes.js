@@ -1,5 +1,5 @@
 import express from 'express'
-import { allProduct, getById, newProduct } from '../controllers/productController.js'
+import { allProduct, deteleProduct, getById, newProduct, update } from '../controllers/productController.js'
 
 const router = express.Router()
 
@@ -9,5 +9,7 @@ router.route('/')
 
 router.route('/:id')
     .get(getById)
+    .put(update)
+    .patch(deteleProduct)
 
 export default router
