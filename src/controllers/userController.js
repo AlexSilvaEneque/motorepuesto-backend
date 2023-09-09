@@ -69,23 +69,15 @@ const update = async (req, res) => {
 
     const { email, password, first_name, last_name, role, username, phone } = req.body
     
-    if (!email || !password || !first_name || !last_name || !role) {
+    if (!email || !first_name || !last_name || !role) {
         const error = new Error('LLene los campos obligatorios.')
         return res.status(400).json({
             msg: error.message
         })
     }
 
-    const MIN_PASSWORD_LENGTH = 8
-    if (password.trim().length < MIN_PASSWORD_LENGTH) {
-        const error = new Error(`La contraseña debe tener como mínimo ${MIN_PASSWORD_LENGTH} caracteres.`)
-        return res.status(400).json({
-            msg: error.message
-        })
-    }
-
     user.email = email
-    user.password = password
+    user.password = password || user.password
     user.first_name = first_name
     user.last_name = last_name
     user.role = role
