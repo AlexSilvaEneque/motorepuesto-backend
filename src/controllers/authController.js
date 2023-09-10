@@ -30,7 +30,19 @@ const user = async (req, res) => {
     res.json(user)
 }
 
+const admin = async (req, res) => {
+    const { description } = req.user.role
+    if (description.toLowerCase() !== 'administrador') {
+        const error = new Error('No autorizado')
+        return res.status(403).json({
+            msg: error.message
+        })
+    }
+    res.json(true)
+}
+
 export {
     login,
-    user
+    user,
+    admin
 }
