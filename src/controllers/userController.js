@@ -40,11 +40,12 @@ const register = async (req, res) => {
 
 const getAll = async (req, res) => {
     const user = await User.find({
-        status:true
+        status:true,
+        _id: { $ne: req.user._id }
     }).select("-password")
-    res.json({
+    res.json(
         user
-    })
+    )
 }
 
 const getById = async (req, res) => {
