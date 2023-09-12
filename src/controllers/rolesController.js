@@ -2,11 +2,13 @@ import Role from "../models/Role.js"
 import { validateObjectId } from "../utils/index.js"
 
 const getAll = async (req, res) => {
+    let role = req.user.role.description.toLowerCase().includes('admin') ? true : false
     const roles = await Role.find({
         status:true
     })
     res.json({
-        roles
+        roles,
+        isAdmin: role
     })
 }
 

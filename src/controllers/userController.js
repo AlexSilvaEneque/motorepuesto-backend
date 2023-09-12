@@ -39,13 +39,15 @@ const register = async (req, res) => {
 }
 
 const getAll = async (req, res) => {
+    let role = req.user.role.description.toLowerCase().includes('admin') ? true : false
     const user = await User.find({
         status:true,
         _id: { $ne: req.user._id }
     }).select("-password")
-    res.json(
-        user
-    )
+    res.json({
+            user,
+            isAdmin: role
+    })
 }
 
 const getById = async (req, res) => {

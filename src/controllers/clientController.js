@@ -2,10 +2,14 @@ import Client from "../models/Client.js"
 import { handleNotFoundError, validateObjectId } from "../utils/index.js"
 
 const allClient = async (req, res) => {
+    let role = req.user.role.description.toLowerCase().includes('admin') ? true : false
     const clients = await Client.find({
         status:true
     })
-    res.json(clients)
+    res.json({
+        clients,
+        isAdmin: role
+    })
 }
 
 const getById = async (req, res) => {
