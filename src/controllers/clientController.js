@@ -25,9 +25,9 @@ const getById = async (req, res) => {
 }
 
 const newClient  = async (req, res) => {
-    const { name, last_name, dni } = req.body
+    const { name, type, doc } = req.body
 
-    if (!name && !last_name && !dni) {
+    if (!name && !type && !doc) {
         const error = new Error('Envia los campos obligatorios')
         return res.status(401).json({
             msg: error.message
@@ -61,9 +61,9 @@ const update = async (req, res) => {
         return handleNotFoundError('El cliente no existe', res)
     }
 
-    const { name, last_name, dni, address, phone } = req.body
+    const { name, type, doc, address, phone } = req.body
 
-    if (!name && !last_name && !dni) {
+    if (!name && !type && !doc) {
         const error = new Error('LLene los campos obligatorios.')
         return res.status(400).json({
             msg: error.message
@@ -71,8 +71,8 @@ const update = async (req, res) => {
     }
 
     client.name = name
-    client.last_name = last_name
-    client.dni = dni
+    client.type = type
+    client.doc = doc
     client.address = address || client.address
     client.phone = phone || client.phone
 

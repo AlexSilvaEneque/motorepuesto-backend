@@ -5,11 +5,11 @@ const clientSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    last_name: {
-        type: String,
+    type: {
+        type: Number,
         required: true
     },
-    dni: {
+    doc: {
         type: String,
         required: true
     },

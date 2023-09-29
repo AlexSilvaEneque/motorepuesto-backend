@@ -6,7 +6,7 @@ const ProductSchema = mongoose.Schema({
         required: true
     },
     price: {
-        type: Number,
+        type: mongoose.Schema.Types.Decimal128,
         required: true
     },
     quantity: {
