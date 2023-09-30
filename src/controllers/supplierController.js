@@ -71,8 +71,8 @@ const update = async (req, res) => {
         })
     }
 
-    supplier.address = address || supplier.address
-    supplier.email = email || supplier.email
+    supplier.address = address
+    supplier.email = email
     supplier.social_reason = social_reason
     supplier.representative = representative
     supplier.phono = phono

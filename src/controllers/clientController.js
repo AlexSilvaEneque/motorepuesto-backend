@@ -73,8 +73,8 @@ const update = async (req, res) => {
     client.name = name
     client.type = type
     client.doc = doc
-    client.address = address || client.address
-    client.phone = phone || client.phone
+    client.address = address
+    client.phone = phone
 
     try {
         await client.save()
