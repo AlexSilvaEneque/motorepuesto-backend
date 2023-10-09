@@ -11,6 +11,10 @@ const ProductSchema = mongoose.Schema({
     },
     quantity: {
         type: Number,
+        default: 0
+    },
+    type: {
+        type: Number,
         required: true
     },
     status: {

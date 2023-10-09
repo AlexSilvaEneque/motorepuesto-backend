@@ -43,7 +43,7 @@ const getAll = async (req, res) => {
     const user = await User.find({
         status:true,
         _id: { $ne: req.user._id }
-    }).select("-password")
+    }).select("-password").populate('role')
     res.json({
             user,
             isAdmin: role

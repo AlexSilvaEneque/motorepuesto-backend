@@ -25,9 +25,9 @@ const getById = async (req, res) => {
 }
 
 const newProduct = async (req, res) => {
-    const { name, price, quantity } = req.body
+    const { name, price } = req.body
 
-    if (!name || !price || !quantity) {
+    if (!name || !price) {
         const error = new Error('Envia los campos obligatorios')
         return res.status(401).json({
             msg: error.message
@@ -62,8 +62,8 @@ const update = async (req, res) => {
         return handleNotFoundError('El cliente no existe',res)
     }
 
-    const {name, price, quantity} = req.body
-    if (!name || !price || !quantity) {
+    const {name, price, quantity, type} = req.body
+    if (!name || !price) {
         const error = new Error('Llene todos los datos requeridos')
         return res.status(400).json({
             msg: error.message
@@ -73,6 +73,7 @@ const update = async (req, res) => {
     product.name = name
     product.price = price
     product.quantity = quantity
+    product.type = type
 
     try {
         await product.save()
