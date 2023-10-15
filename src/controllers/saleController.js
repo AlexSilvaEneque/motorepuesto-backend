@@ -1,11 +1,13 @@
 import detailSaleProduct from "../models/DetailSaleProduct.js"
 import detailSaleService from "../models/DetailSaleService.js"
+import Product from "../models/Product.js"
 import Sale from "../models/Sale.js"
 import { handleNotFoundError, validateObjectId } from "../utils/index.js"
 
 const getSales = async (req, res) => {
     const sales = await Sale.find().select("-__v -tax -discount -detailProducts")
         .populate({ path: 'client', select: 'name'})
+        .sort('-date')
 
     res.json(sales)
 }
@@ -63,6 +65,11 @@ const newSale = async (req, res) => {
         if (IdPsave) {
             totalPricePro = await Promise.all(IdPsave.map(async (item) => {
                 const detail = await detailSaleProduct.findById(item).populate('products')
+                if (detail.products.type === 1) {
+                    const npro = await Product.findById(detail.products._id)
+                    npro.quantity = npro.quantity - detail.quantity
+                    await npro.save()
+                }
                 const subtotal = parseFloat(detail.products.price.toString()) * detail.quantity
                 return subtotal
             }))            
@@ -87,10 +94,11 @@ const newSale = async (req, res) => {
         sale.detailServices = IdSsave
         
         const newSale = new Sale(sale)
-        await newSale.save()
+        const result = await newSale.save()
 
         res.json({
-            msg: 'La venta se registró correctamente'
+            msg: 'La venta se registró correctamente',
+            id: result._id
         })
         
     } catch (error) {
@@ -146,10 +154,32 @@ const deleteSale = async (req, res) => {
     }
 }
 
+const changeStatusPayment = async (req, res) => {
+    
+    const { id } = req.params
+    if (validateObjectId(id, res)) return
+
+    const sale = await Sale.findById(id)
+    if (!sale) {
+        return handleNotFoundError('La venta no existe', res)
+    }
+    
+    sale.statusPayment = true
+    try {
+        await sale.save()
+        res.json({
+            msg: 'Venta pagada'
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export {
     getSales,
     getSaleById,
     newSale,
     updateSale,
-    deleteSale
+    deleteSale,
+    changeStatusPayment
 }

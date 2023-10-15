@@ -2,6 +2,7 @@ import User from "../models/User.js"
 import { generateJWT } from "../utils/index.js"
 
 const login = async (req, res) => {
+    console.log(req.body)
     const { email, password } = req.body
 
     const user = await User.findOne({ email })

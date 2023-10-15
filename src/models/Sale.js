@@ -37,10 +37,19 @@ const saleSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'DetailSaleProduct'
     }],
+    // FIXME: delete
     detailServices: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'DetailSaleService'
     }],
+    
+    statusPayment: {
+        type: Boolean,
+        default: false
+    },
+    link_payment: {
+        
+    }
 })
 
 const Sale = mongoose.model('Sale', saleSchema)
