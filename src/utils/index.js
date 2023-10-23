@@ -24,8 +24,14 @@ const handleNotFoundError = (message, res) => {
     })
 }
 
+const converttoMMDDYYYY = (date) => {
+    const [day, month, year] = date.split('/')
+    return new Date(`${month}/${day}/${year}`)
+}
+
 export {
     generateJWT,
     validateObjectId,
-    handleNotFoundError
+    handleNotFoundError,
+    converttoMMDDYYYY
 }
