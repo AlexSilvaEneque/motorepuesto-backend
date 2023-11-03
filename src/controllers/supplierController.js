@@ -110,4 +110,4 @@ const deleteSupplier = async (req,res) => {
 }
 
 
-export { allSupplier, getById, newSupplier, update, deleteSupplier}
+export { allSupplier, getById, newSupplier, update, deleteSupplier }
