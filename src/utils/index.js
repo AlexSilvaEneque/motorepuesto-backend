@@ -29,9 +29,15 @@ const converttoMMDDYYYY = (date) => {
     return new Date(`${month}/${day}/${year}`)
 }
 
+const converttoMMDDYYYY2 = (date) => {
+    const [day, month, year] = date.split('/')
+    return new Date(`${year}-${month}-${day}`)
+}
+
 export {
     generateJWT,
     validateObjectId,
     handleNotFoundError,
-    converttoMMDDYYYY
+    converttoMMDDYYYY,
+    converttoMMDDYYYY2
 }

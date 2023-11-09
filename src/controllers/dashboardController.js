@@ -15,6 +15,8 @@ const allInformation = async (req, res) => {
         const twoMonthsAgo = new Date()
         twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 4)
 
+        console.log(currentDate)
+
         const saleTotalPromise = Sale.aggregate([
             {
                 $match: {

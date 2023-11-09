@@ -48,7 +48,7 @@ const getById = async (req, res) => {
 // listar ventas y compras
 const getDataByRangeDate = async (req, res) => {
     const { initial_date, finish_date } = req.query
-
+    
     const format_initial = converttoMMDDYYYY(initial_date)
     const format_finish = converttoMMDDYYYY(finish_date)
 
@@ -76,7 +76,7 @@ const getDataByRangeDate = async (req, res) => {
 
 const getDataByRangeDate2 = async (req, res) => {
     const { initial_date, finish_date } = req.query
-
+    console.log(req.query)
     const format_initial = converttoMMDDYYYY(initial_date)
     const format_finish = converttoMMDDYYYY(finish_date)
 

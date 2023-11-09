@@ -14,6 +14,7 @@ import paymentRoutes from './routes/paymentRoutes.js'
 import purchaseRoutes from './routes/purchaseRoute.js'
 import incomeExpenseRoutes from './routes/incomeExpenseRoutes.js'
 import dashboardRoutes from './routes/dashboardRoutes.js'
+import reportsRoutes from './routes/reportsRoutes.js'
 
 dotenv.config()
 
@@ -55,6 +56,7 @@ app.use('/api/payment', paymentRoutes)
 app.use('/api/purchase', purchaseRoutes)
 app.use('/api/income-expense', incomeExpenseRoutes)
 app.use('/api/dashboard', dashboardRoutes)
+app.use('/api/reports', reportsRoutes)
 
 const PORT = process.env.PORT || 4000
 
